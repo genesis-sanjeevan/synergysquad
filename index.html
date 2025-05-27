@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy Squad | Empowering Learning. Transforming Futures.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7209b7;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #38b000;
+            --warning: #ff9e00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            margin-left: 8px;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1400/800') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 5px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .advantage-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .advantage-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .services-tabs {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .services-content {
+            display: none;
+        }
+
+        .services-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-category {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .service-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 5px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .testimonials {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 10px;
+        }
+
+        .testimonial-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-btn:hover {
+            background-color: var(--primary);
+        }
+
+        .contact {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+        }
+
+        .contact-form-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 1.5rem 0;
+            background-color: #1a1a1a;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-sync-alt"></i>
+                <span>Synergy Squad</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Empowering Learning. Transforming Futures.</h1>
+            <p>A collective of passionate trainers delivering high-quality, practical training programs.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to Synergy Squad — a collective of passionate and experienced trainers with over a decade of hands-on expertise across diverse domains. After years of contributing to training programs under various banners and CSR initiatives, we came together with a shared vision: to create impactful, real-world learning experiences under our own banner.</p>
+                <p>What sets us apart? While many institutions focus on paperwork and checklists, we focus on transformation. At Synergy Squad, we were the ones on the ground — directly interacting with students, professionals, and corporate teams. That journey gave us deep insight into what truly works.</p>
+                <p>Now, with our own platform, we are committed to delivering high-quality, practical, and personalized training—designed not just to tick boxes, but to ignite capability and confidence.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Why Choose Synergy Squad?</h3>
+                <div class="advantages">
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Experienced Trainers</h4>
+                        <p>Trainers with years of domain experience</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-hands-on"></i>
+                        </div>
+                        <h4>Practical Approach</h4>
+                        <p>Activity-based training approach</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Real Scenarios</h4>
+                        <p>Real-time scenarios and hands-on learning</p>
+                    </div>
+
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fa-solid fa-closed-captioning"></i>
+                        </div>
+                        <h4>Real Scenarios</h4>
+                        <p>Real-time scenarios and hands-on learning</p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="about-image">
+                <img src="/api/placeholder/600/400" alt="Synergy Squad Team">
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section" style="background-color: #f1f1f1;">
+        <h2 class="section-title">Our Services</h2>
+        
+        <div class="services-tabs">
+            <button class="tab-btn active" data-tab="college">College</button>
+            <button class="tab-btn" data-tab="corporate">Corporate</button>
+            <button class="tab-btn" data-tab="common">Common Programs</button>
+            <button class="tab-btn" data-tab="emotional">Emotional Wellness</button>
+        </div>
+        
+        <!-- College Tab Content -->
+        <div class="services-content active" id="college-content">
+            <div class="service-categories">
+                <div class="service-category">
+                    <h3>Placement Training</h3>
+                    <ul class="service-list">
+                        <li>Aptitude</li>
+                        <li>Soft Skills</li>
+                        <li>Interview Skills</li>
+                        <li>English Communication</li>
+                        <li>Public Speaking</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Company Specific Training</h3>
+                    <ul class="service-list">
+                        <li>Product Based Companies</li>
+                        <li>Service Based Companies</li>
+                        <li>Credit Course Training</li>
+                        <li>Universities</li>
+                        <li>Autonomous Colleges</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Competitive Exam Training</h3>
+                    <ul class="service-list">
+                        <li>Banking</li>
+                        <li>MBA Entrance</li>
+                        <li>SSC & Railways</li>
+                        <li>BFSI & TNPSC</li>
+                        <li>Defence</li>
+                        <li>English Competency</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Core Technical Training</h3>
+                    <ul class="service-list">
+                        <li>Cyber Security</li>
+                        <li>Digital Marketing</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Corporate Tab Content -->
+        <div class="services-content" id="corporate-content">
+            <div class="service-categories">
+                <div class="service-category">
+                    <h3>Soft Skills & Behavioral Training</h3>
+                    <ul class="service-list">
+                        <li>Business Communication</li>
+                        <li>Time Management for Tech Teams</li>
+                        <li>Cross-Cultural Communication</li>
+                        <li>Critical Thinking & Problem Solving</li>
+                        <li>Conflict Resolution in Agile Teams</li>
+                        <li>Collaboration in Hybrid Work Models</li>
+                        <li>Fresher Induction Training</li>
+                        <li>Campus to Corporate Training</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Leadership & Productivity</h3>
+                    <ul class="service-list">
+                        <li>First-Time Manager Training</li>
+                        <li>Team Management</li>
+                        <li>Emotional Intelligence at Workplace</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Retail Industry</h3>
+                    <ul class="service-list">
+                        <li>Customer-Centric Training</li>
+                        <li>Customer Relationship Management (CRM)</li>
+                        <li>In-Store Communication Skills</li>
+                        <li>Complaint Handling & Recovery Skills</li>
+                        <li>Retail Sales Techniques</li>
+                        <li>Managing Store Operations</li>
+                        <li>Grooming & Etiquette</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Workforce Development</h3>
+                    <ul class="service-list">
+                        <li>Team Building for Floor Staff</li>
+                        <li>Communication Skills for Non-Desk Employees</li>
+                        <li>Supervisory Skills for Line Leaders</li>
+                        <li>Stress Management in High-Pressure Zones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Common Programs Tab Content -->
+        <div class="services-content" id="common-content">
+            <div class="service-categories">
+                <div class="service-category">
+                    <h3>POSH Training</h3>
+                    <ul class="service-list">
+                        <li>Employee Awareness Workshops</li>
+                        <li>Managerial Sensitization</li>
+                        <li>Setting up Internal Committee (IC)</li>
+                        <li>Annual Report Guidance</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Counselling & Well-being</h3>
+                    <ul class="service-list">
+                        <li>One-on-One Counselling</li>
+                        <li>Workplace Stress & Burnout Management</li>
+                        <li>Work-Life Balance Workshops</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Diversity & Inclusion</h3>
+                    <ul class="service-list">
+                        <li>Inclusive Workplace Practices</li>
+                        <li>Bias Awareness Training</li>
+                        <li>Gender Sensitization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Emotional Wellness Tab Content -->
+        <div class="services-content" id="emotional-content">
+            <div class="service-categories">
+                <div class="service-category">
+                    <h3>Handling Emotions & Early Relationships</h3>
+                    <ul class="service-list">
+                        <li>Understanding Emotions: What, Why, and How to Manage</li>
+                        <li>Building Healthy Friendships vs. Romantic Confusion</li>
+                        <li>Respecting Boundaries & Understanding Consent</li>
+                        <li>Identifying Infatuation vs. Real Relationships</li>
+                        <li>How to Handle Heartbreak in a Healthy Way</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Failure Management & Resilience</h3>
+                    <ul class="service-list">
+                        <li>Learning to Accept Failure as Feedback</li>
+                        <li>How to Bounce Back from Low Scores or Mistakes</li>
+                        <li>Coping with Criticism, Comparison & Pressure</li>
+                        <li>Developing a Growth Mindset</li>
+                        <li>Understanding that "Marks don't define you"</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Digital Addiction & Mobile Detox</h3>
+                    <ul class="service-list">
+                        <li>Understanding Screen Time and Its Effects on Brain</li>
+                        <li>Social Media Pressure & Mental Health</li>
+                        <li>Gaming Addiction & Escapism</li>
+                        <li>Techniques for Digital Detox</li>
+                        <li>Building Real-Life Social Connections</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3>Emotional Intelligence & Self-Control</h3>
+                    <ul class="service-list">
+                        <li>Recognising and Naming Emotions</li>
+                        <li>Building Empathy and Perspective Taking</li>
+                        <li>Coping Mechanisms</li>
+                        <li>Impulse Control & Decision Making</li>
+                        <li>Assertive vs. Aggressive Behaviour</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Training Session">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Workshop">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Corporate Training">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="College Program">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Team Building">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Certification">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section" style="background-color: #f1f1f1;">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "Synergy Squad's training program completely transformed our team dynamics. Their practical approach and real-world scenarios made the learning experience not just educational but genuinely enjoyable. We've seen measurable improvements in our team's performance since the training."
+                    </div>
+                    <div class="testimonial-author">- Sarah J., HR Manager</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "The placement training program was exactly what our students needed. The trainers were knowledgeable, engaging and truly invested in our students' success. We've seen a 40% increase in placement rates since partnering with Synergy Squad."
+                    </div>
+                    <div class="testimonial-author">- Dr. Rajesh K., College Dean</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "As someone who struggled with public speaking, the communication workshop was life-changing. The trainers created such a supportive environment that I actually felt comfortable practicing in front of others. Now I lead team presentations with confidence!"
+                    </div>
+                    <div class="testimonial-author">- Priya M., Software Developer</div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="testimonial-btn" id="prev-testimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-btn" id="next-testimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact">
+            <div class="contact-form-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about our services or want to discuss a customized training program? Reach out to us!</p>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Training Avenue, Tech Park, Bangalore, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@synergysquad.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Synergy Squad</h3>
+                <p>Empowering Learning. Transforming Futures.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">College Training</a></li>
+                    <li><a href="#services">Corporate Training</a></li>
+                    <li><a href="#services">POSH Training</a></li>
+                    <li><a href="#services">Emotional Wellness</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates.</p>
+                <form class="footer-form">
+                    <input type="email" placeholder="Your Email" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: none;">
+                    <button type="submit" class="submit-btn" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Synergy Squad. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Services Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.services-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to current button and content
+                btn.classList.add('active');
+                document.getElementById(`${tab}-content`).classList.add('active');
+            });
+        });
+
+        // Testimonial Slider
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let currentIndex = 0;
+
+        const showTestimonial = (index) => {
+            testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? testimonials.length - 1 : currentIndex - 1;
+            showTestimonial(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
+            showTestimonial(currentIndex);
+        });
+
+        // Auto slide testimonials
+        setInterval(() => {
+            currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
+            showTestimonial(currentIndex);
+        }, 5000);
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission (prevent page reload)
+        const contactForm = document.querySelector('.contact-form');
+        const footerForm = document.querySelector('.footer-form');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        footerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            footerForm.reset();
+        });
+    </script>
+</body>
+</html>
